@@ -90,13 +90,13 @@ describe('solr.js', () => {
   describe('queryCompanySOLR', () => {
     it('should return company data', async () => {
       mockFetch.mockResolvedValue(makeSolrResponse(1, [
-        { id: '39176747', company: 'LSEG BUSINESS SERVICES RM S.R.L.', brand: .LSEG' }
+        { id: '39176747', company: 'LSEG BUSINESS SERVICES RM S.R.L.', brand: 'LSEG' }
       ]));
 
       const result = await solr.queryCompanySOLR('id:39176747');
 
       expect(result.numFound).toBe(1);
-      expect(result.docs[0].brand: .LSEG');
+      expect(result.docs[0].brand: 'LSEG');
     });
 
     it('should return empty when company not found', async () => {

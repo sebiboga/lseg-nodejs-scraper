@@ -30,11 +30,11 @@ describe('index.js Component Tests', () => {
 
     it('should keep company uppercase', () => {
       const payload = {
-        source: .lseg.com.,
-        company: .lseg.international srl',
-        cif: .39176747.,
+        source: 'lseg.com',
+        company: 'lseg international srl',
+        cif: '39176747',
         jobs: [
-          { url: 'https://test.com/1', title: 'Job 1', company: .lseg., cif: .39176747. }
+          { url: 'https://test.com/1', title: 'Job 1', company: 'lseg', cif: '39176747' }
         ]
       };
 
@@ -78,7 +78,7 @@ describe('index.js Component Tests', () => {
       };
 
       const COMPANY_NAME = 'LSEG BUSINESS SERVICES RM S.R.L.';
-      const COMPANY_CIF = .39176747.;
+      const COMPANY_CIF = '39176747';
 
       const result = index.mapToJobModel(rawJob, COMPANY_CIF, COMPANY_NAME);
 
