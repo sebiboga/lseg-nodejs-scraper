@@ -1,8 +1,8 @@
 # job_seeker_ro_spider
 
-**job_seeker_ro_spider** — scraper pentru job-urile EPAM Systems din România.
+**job_seeker_ro_spider** — scraper pentru job-urile LSEG Systems din România.
 
-Extrage anunțurile de pe [EPAM Careers Romania](https://careers.epam.com/en/jobs/romania) și le publică în [peviitor.ro](https://peviitor.ro) prin API-ul SOLR.
+Extrage anunțurile de pe [LSEG Careers Romania](https://lseg.wd3.myworkdayjobs.com/en/jobs/romania) și le publică în [peviitor.ro](https://peviitor.ro) prin API-ul SOLR.
 
 ## Identificare
 
@@ -14,12 +14,12 @@ job_seeker_ro_spider
 
 ## Ce face
 
-1. **Validează compania** — interoghează API-ul public ANAF ([demoanaf.ro](https://demoanaf.ro)) după CIF-ul EPAM (33159615) și verifică:
-   - Denumirea oficială: EPAM SYSTEMS INTERNATIONAL SRL
+1. **Validează compania** — interoghează API-ul public ANAF ([demoanaf.ro](https://demoanaf.ro)) după CIF-ul LSEG (39176747) și verifică:
+   - Denumirea oficială: LSEG SYSTEMS INTERNATIONAL SRL
    - Status: activ/inactiv/radiat
    - Adresa completă din registrul comerțului
 2. **Cross-validează cu Peviitor** — verifică existența companiei în API-ul Peviitor
-3. **Scrape-uiește job-urile** — extrage lista completă de job-uri din API-ul public EPAM Careers, filtrat pe România
+3. **Scrape-uiește job-urile** — extrage lista completă de job-uri din API-ul public LSEG Careers, filtrat pe România
 4. **Transformă datele** — normalizează locațiile (doar orașe românești), tag-urile (lowercase), workmode-ul (remote/on-site/hybrid)
 5. **Stochează în SOLR** — upsert în `job` core (job-urile) și `company` core (datele companiei cu adresa completă)
 6. **Generează docs/jobs.md** — fișier markdown cu informații companie + toate job-urile curente, publicat pe [GitHub Pages](https://sebiboga.github.io/epam-systems-international-srl-nodejs-scraper/jobs.md)
@@ -51,7 +51,7 @@ job_seeker_ro_spider
 
 | API | URL | Autentificare |
 |---|---|---|
-| EPAM Careers | `https://careers.epam.com/api/jobs/v2/search/...` | Public |
+| LSEG Careers | `https://lseg.wd3.myworkdayjobs.com/api/jobs/v2/search/...` | Public |
 | ANAF (demoanaf) | `https://demoanaf.ro/api/...` | Public |
 | Peviitor | `https://api.peviitor.ro/v1/company/` | Public |
 | SOLR (job core) | `https://solr.peviitor.ro/solr/job` | `SOLR_AUTH` |
@@ -59,7 +59,7 @@ job_seeker_ro_spider
 
 ## Robots.txt
 
-EPAM Careers [robots.txt](https://careers.epam.com/robots.txt) dezactivează:
+LSEG Careers [robots.txt](https://lseg.wd3.myworkdayjobs.com/robots.txt) dezactivează:
 - `/api/*` — API-ul JSON folosit de scraper
 - `/*/vacancy/*` — paginile individuale de job
 
@@ -97,7 +97,7 @@ npm run test:unit
 # Doar integrare (necesită ANAF live, SOLR conditional)
 npm run test:integration
 
-# Doar E2E (API real EPAM + ANAF + SOLR)
+# Doar E2E (API real LSEG + ANAF + SOLR)
 npm run test:e2e
 ```
 

@@ -7,6 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = process.env.GITHUB_REPOSITORY;
 const TOKEN = process.env.GITHUB_TOKEN;
 const SCRAPER_YML = ".github/workflows/job-seeker-ro-spider.yml";
+import companyConfig from "../../config/company.js";
 
 
 function repoUrl(apiPath) {
@@ -76,7 +77,7 @@ describe("Repository Configuration", () => {
       const html = await res.text();
       expect(html).toContain("<!DOCTYPE html>");
       expect(html).toContain("peviitor");
-      expect(html).toContain("EPAM");
+      expect(html).toContain(companyConfig.brand);
       console.log(`✅ GitHub Pages HTML loaded from ${pagesUrl}`);
     });
   });
