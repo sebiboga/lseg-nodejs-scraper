@@ -40,7 +40,7 @@ describe('index.js Component Tests', () => {
 
       const result = index.transformJobsForSOLR(payload);
 
-      expect(result.company).toBe('LSEG BUSINESS SERVICES RM S.R.L.');
+      expect(result.company).toBe('LSEG INTERNATIONAL SRL');
     });
 
     it('should normalize workmode values', () => {
@@ -135,7 +135,7 @@ describe('index.js Component Tests', () => {
 
       expect(result.jobs).toHaveLength(1);
       expect(result.jobs[0].title).toBe('Senior Software Engineer');
-      expect(result.jobs[0].location).toEqual(['Bucharest']);
+      expect(result.jobs[0].location).toEqual(['Bucharest', 'Romania']);
     });
 
     it('should handle empty job list', () => {

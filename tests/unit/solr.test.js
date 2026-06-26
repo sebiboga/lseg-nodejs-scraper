@@ -96,7 +96,7 @@ describe('solr.js', () => {
       const result = await solr.queryCompanySOLR('id:39176747');
 
       expect(result.numFound).toBe(1);
-      expect(result.docs[0].brand: 'LSEG');
+      expect(result.docs[0].brand).toBe('LSEG');
     });
 
     it('should return empty when company not found', async () => {
