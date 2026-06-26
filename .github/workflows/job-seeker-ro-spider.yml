@@ -28,6 +28,7 @@ jobs:
 
       - name: Pre-scrape — Unit Tests
         run: |
+          mkdir -p docs/test-results
           npm run test:unit
           sed -i 's|<title>Test Report</title>|<title>Pre-scrape: Unit Tests — LSEG BUSINESS SERVICES RM S.R.L.</title>|;s|<h1 id="title">Test Report</h1>|<h1 id="title">Pre-scrape: Unit Tests — LSEG BUSINESS SERVICES RM S.R.L.</h1>|' test-report.html
           cp test-report.html docs/test-results/pre-scrape-unit.html || true
@@ -36,6 +37,7 @@ jobs:
 
       - name: Pre-scrape — Integration Tests
         run: |
+          mkdir -p docs/test-results
           npm run test:integration
           sed -i 's|<title>Test Report</title>|<title>Pre-scrape: Integration Tests — LSEG BUSINESS SERVICES RM S.R.L.</title>|;s|<h1 id="title">Test Report</h1>|<h1 id="title">Pre-scrape: Integration Tests — LSEG BUSINESS SERVICES RM S.R.L.</h1>|' test-report.html
           cp test-report.html docs/test-results/pre-scrape-integration.html || true
@@ -58,6 +60,7 @@ jobs:
 
       - name: Post-scrape — E2E Tests
         run: |
+          mkdir -p docs/test-results
           npm run test:e2e
           sed -i 's|<title>Test Report</title>|<title>Post-scrape: E2E Tests — LSEG BUSINESS SERVICES RM S.R.L.</title>|;s|<h1 id="title">Test Report</h1>|<h1 id="title">Post-scrape: E2E Tests — LSEG BUSINESS SERVICES RM S.R.L.</h1>|' test-report.html
           cp test-report.html docs/test-results/post-scrape.html || true
@@ -66,6 +69,7 @@ jobs:
 
       - name: Consistency Tests
         run: |
+          mkdir -p docs/test-results
           npm run test:consistency
           sed -i 's|<title>Test Report</title>|<title>Post-scrape: Consistency Tests — LSEG BUSINESS SERVICES RM S.R.L.</title>|;s|<h1 id="title">Test Report</h1>|<h1 id="title">Post-scrape: Consistency Tests — LSEG BUSINESS SERVICES RM S.R.L.</h1>|' test-report.html
           cp test-report.html docs/test-results/post-scrape-consistency.html || true
@@ -85,9 +89,10 @@ jobs:
       - name: Push test results to docs/
         if: always()
         run: |
+          mkdir -p docs/test-results
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/test-results/
+          git add docs/test-results/ || true
           git add docs/jobs.md || true
           git commit -m "[skip ci] Update test results" || echo "No changes to commit"
           git push || echo "Push failed (race condition) — will be picked up next run"
