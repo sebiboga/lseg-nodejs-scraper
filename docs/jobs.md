@@ -10,11 +10,11 @@
 | Location | IULIU MANIU, 6F, Bucureşti Sectorul 6, Bucureşti |
 | Website | [https://www.lseg.com](https://www.lseg.com) |
 | Careers | [https://www.lseg.com/en/careers](https://www.lseg.com/en/careers) |
-| Last Scraped | 2026-06-27 |
+| Last Scraped | 2026-06-29 |
 
 ## Current Job Listings (66)
 
-_Generated: 2026-06-27T12:10:49.859Z_
+_Generated: 2026-06-29T11:13:53.100Z_
 
 ### Senior Software Engineer (Full stack JavaScript)
 
